@@ -1,7 +1,7 @@
 import math
 
-# pi - the π number, rad_earth - sphere radius in meters (Earth), rad - work sphere radius
-rad_earth = 6372795
+# rad_earth - sphere radius in kilometers (Earth), rad - work sphere radius in kilometers
+rad_earth = 6372.795
 rad = rad_earth
 
 # coordinates of two points
@@ -30,8 +30,7 @@ sdelta = math.sin(delta)
 y = math.sqrt(math.pow(cl2 * sdelta, 2) + math.pow(cl1 * sl2 - sl1 * cl2 * cdelta, 2))
 x = sl1 * sl2 + cl1 * cl2 * cdelta
 ad = math.atan2(y, x)
-dist_m = ad * rad
-dist_km = dist_m / 1000
+dist = ad * rad
 
 # initial bearing calculation
 x = (cl1 * sl2) - (sl1 * cl2 * cdelta)
@@ -46,5 +45,5 @@ z2 = - math.radians(z2)
 anglerad2 = z2 - ((2 * math.pi) * math.floor((z2 / (2 * math.pi))))
 angledeg = (anglerad2 * 180.) / math.pi
 
-print('Distance => %.3f' % dist_km, '[km]')
+print('Distance => %.3f' % dist, '[km]')
 print('Initial bearing => %.2f' % angledeg, '[degrees]')
