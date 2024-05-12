@@ -35,26 +35,26 @@ function calculateBearing(){
 
     // initial bearing calculation
     x = (cl1 * sl2) - (sl1 * cl2 * cdelta);
-    y = sdelta * cl2
+    y = sdelta * cl2;
     function degrees(radians) {
         return radians * (180 / pi);
     }
     let z = degrees(Math.atan(-y / x));
 
     if (x <= 0) {
-        z = z + 180.;
+        z = z + 180;
     }
 
-    let z2 = (z + 180.) % 360. - 180.
+    let z2 = (z + 180) % 360 - 180;
     function radians(degrees) {
         return degrees * (pi/180);
     }
     z2 = - radians(z2)
     let anglerad2 = z2 - ((2 * pi) * Math.floor((z2 / (2 * pi))));
-    angledeg = (anglerad2 * 180.) / pi;
+    angledeg = (anglerad2 * 180) / pi;
 
     // remove previous calculations results
-    removeResults()
+    removeResults();
     // show the results of calculations
     showResults();
 }
@@ -128,7 +128,7 @@ function showResults() {
     } else {
         let warnDiv = document.createElement("div");
             warnDiv.setAttribute("id", "warn");
-            warnDiv.innerHTML =  "First enter the coordinates!";
+            warnDiv.innerHTML =  "First enter the coordinates! <br> (and mind the spaces  😉)";
             warnDiv.style.color = "orangered";
         let resultsDiv = document.getElementById("buttons");
             resultsDiv.after(warnDiv);
@@ -137,7 +137,7 @@ function showResults() {
 
 function reset(){
     // remove previous calculations results
-    removeResults()
+    removeResults();
     // clear inputs
     document.getElementById("rad").value = "";
     document.getElementById("lat1").value = "";
