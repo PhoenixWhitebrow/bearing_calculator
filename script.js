@@ -53,22 +53,6 @@ function calculateBearing(){
     var anglerad2 = z2 - ((2 * pi) * Math.floor((z2 / (2 * pi))));
     var angledeg = (anglerad2 * 180.) / pi;
 
-/// old
-//  var deltaX = xEnd - xStart;
-//  var deltaY = yEnd - yStart;
-
-//  var heading = (Math.atan2(deltaY, deltaX) * (180/3.14159265));
-
-//  if (heading <= 0) {
-//      heading = 360 + heading;
-//  }
-    
-//  heading = Math.round(heading);
-    
-//  setTimeout(function(){
-//      alert("To reach the destination coordinates, fly at a heading of: \n\n" + heading + "\xB0");
-//  }, 200);
-
     // remove previous results
     Element.prototype.remove = function() {
         this.parentElement.removeChild(this);
@@ -87,16 +71,39 @@ function calculateBearing(){
     // display current results
     const resultsDiv = document.createElement("div");
     resultsDiv.setAttribute("id", "results");
-    var resultsContent = document.createTextNode("Bearing " + angledeg + "\xB0. " + "Target destination is in " + dist + " kilometers away");
-    resultsDiv.appendChild(resultsContent);
+    // check if fields are not empty
+    if (llat1 && llong1 && llat2 && llong2) {
+        resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0" + "<br>" + "Target destination is  " + dist.toFixed(3) + " kilometers away";
+    // warn if fields are empty
+    } else {
+        resultsDiv.innerHTML =  "First enter the coordinates!";
+    }
+
 
     const inputDiv = document.getElementById("input");
     inputDiv.after(resultsDiv);
 }
 
 function reset(){
+    // clear inputs
+    document.getElementById("rad").value = "6372.795";
     document.getElementById("lat1").value = "";
     document.getElementById("lon1").value = "";
     document.getElementById("lat2").value = "";
     document.getElementById("lon2").value = "";
+    
+    // remove previous results
+    Element.prototype.remove = function() {
+        this.parentElement.removeChild(this);
+    }
+    NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+        for(var i = this.length - 1; i >= 0; i--) {
+            if(this[i] && this[i].parentElement) {
+                this[i].parentElement.removeChild(this[i]);
+            }
+        }
+    }
+    if (document.getElementById("results")) {
+        document.getElementById("results").remove();
+    }
 }
