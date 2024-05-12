@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Bearing Calculator</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script src="script.js"></script>
 </head>
 <body>
-    <div id="input">
-        <label for="rad">Planet radius (km):</label>
-        <input type="text" id="rad" name="rad" value="6372.795"><br><br>
-
-        <label for="lat1">Current latitude (x):</label>
-        <input type="text" id="lat1" name="lat1" value="48.85836"><br><br>
-        <label for="lon1">Current longitude (y):</label>
-        <input type="text" id="lon1" name="lon1"value="2.29449"><br><br>
-
-        <label for="lat2">Target latitude (x):</label>
-        <input type="text" id="lat2" name="lat2"value="14.74578"><br><br>
-        <label for="lon2">Target longitude (y):</label>
-        <input type="text" id="lon2" name="lon2"value="-17.52819"><br><br>
-
-        <input type="submit" id="submit" value="Submit" onClick="calculateBearing()">
+    <div class="form" id="form">
+        <label class="labels" for="rad">Planet radius (km):</label>
+        <input class="inputs" type="number" id="rad" name="rad" value="6372.795" step="1">
+        <label class="labels" for="lat1">Current latitude (x):</label>
+        <input class="inputs" type="number" id="lat1" name="lat1" value="48.85836" min="-90.000000" max="90.000000" step=any>
+        <label class="labels" for="lon1">Current longitude (y):</label>
+        <input class="inputs" type="number" id="lon1" name="lon1" value="2.29449" min="-90.000000" max="90.000000" step=any>
+        <label class="labels" for="lat2">Target latitude (x):</label>
+        <input class="inputs" type="number" id="lat2" name="lat2" value="14.74578" min="-90.000000" max="90.000000" step=any>
+        <label class="labels" for="lon2">Target longitude (y):</label>
+        <input class="inputs" type="number" id="lon2" name="lon2" value="-17.52819" min="-90.000000" max="90.000000" step=any>
+    </div>
+    <div class="buttons" id="buttons">
+        <br>
+        <input type="submit" id="submit" value="Calculate" onClick="calculateBearing()">
         <input type="submit" id="reset" value="Reset" onClick="reset()">
         <br><br>
     </div>

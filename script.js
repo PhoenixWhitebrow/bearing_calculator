@@ -79,14 +79,14 @@ function calculateBearing(){
         resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0" + "<br>" + "Target destination is  " + dist.toFixed(3) + " kilometers away";
     // warn if fields are empty
     } else if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2))
-        resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0";
+        resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0" + "<br>" + "To calculate the distance, enter the planet radius (in kilometers)";
     else {
         resultsDiv.innerHTML =  "First enter the coordinates!";
+        resultsDiv.style.color = "red";
     }
 
-
-    const inputDiv = document.getElementById("input");
-    inputDiv.after(resultsDiv);
+    const formDiv = document.getElementById("buttons");
+    formDiv.after(resultsDiv);
 }
 
 function reset(){

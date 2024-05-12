@@ -1,0 +1,35 @@
+body {
+    -moz-transform: scale(2); /* for Firefox, default 1*/
+    zoom:200%; /* For Chrome, IE, default 100%*/
+}
+
+.form {
+  position: relative;
+  top: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.labels {
+  grid-column: 1;
+  justify-self: end;
+}
+
+.inputs {
+  grid-column: 2;
+  justify-self: start;
+}
+
+.buttons {
+  position: relative;
+  top: 70px;
+  text-align: center;
+}
+
+#results {
+  position: relative;
+  top: 70px;
+  width: 100%;
+  text-align: center;
+}
