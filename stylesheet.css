@@ -33,3 +33,10 @@ body {
   width: 100%;
   text-align: center;
 }
+
+#warn {
+  position: relative;
+  top: 70px;
+  width: 100%;
+  text-align: center;
+}

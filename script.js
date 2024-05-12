@@ -67,26 +67,42 @@ function calculateBearing(){
     if (document.getElementById("results")) {
         document.getElementById("results").remove();
     }
+    if (document.getElementById("warn")) {
+        document.getElementById("warn").remove();
+    }
 
-    // display current results
-    const resultsDiv = document.createElement("div");
-    resultsDiv.setAttribute("id", "results");
     // check if fields are not empty
     function isNumber(value) {
         return !isNaN(parseInt(value));
     }
+    // if everything's filled correct, show bearing and distance
     if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2) && isNumber(rad)) {
-        resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0" + "<br>" + "Target destination is  " + dist.toFixed(3) + " kilometers away";
-    // warn if fields are empty
-    } else if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2))
-        resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0" + "<br>" + "To calculate the distance, enter the planet radius (in kilometers)";
-    else {
-        resultsDiv.innerHTML =  "First enter the coordinates!";
-        resultsDiv.style.color = "red";
+        var resultsDiv = document.createElement("div");
+            resultsDiv.setAttribute("id", "results");
+            resultsDiv.innerHTML = "Bearing: " + angledeg.toFixed(0) + "\xB0" + "<br>" + "Distance: " + dist.toFixed(3) + " km";
+        var buttonsDiv = document.getElementById("buttons");
+            buttonsDiv.after(resultsDiv);
+    // if radius is not set, show bearing and show a tip to fill the radius 
+    } else if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2)) {
+        var resultsDiv = document.createElement("div");
+            resultsDiv.setAttribute("id", "results");
+            resultsDiv.innerHTML = "Bearing: " + angledeg.toFixed(0) + "\xB0" + "<br>";
+        var warnDiv = document.createElement("div");
+            warnDiv.setAttribute("id", "warn");
+            warnDiv.innerHTML = "To calculate the distance, enter the «Planet radius»";
+            warnDiv.style.color = "blue";
+        var buttonsDiv = document.getElementById("buttons");
+            buttonsDiv.after(resultsDiv);
+            resultsDiv.after(warnDiv);
+    // error message if coordinates are not set
+    } else {
+        var warnDiv = document.createElement("div");
+            warnDiv.setAttribute("id", "warn");
+            warnDiv.innerHTML =  "First enter the coordinates!";
+            warnDiv.style.color = "red";
+        var buttonsDiv = document.getElementById("buttons");
+            buttonsDiv.after(warnDiv);
     }
-
-    const formDiv = document.getElementById("buttons");
-    formDiv.after(resultsDiv);
 }
 
 function reset(){
@@ -110,6 +126,9 @@ function reset(){
     }
     if (document.getElementById("results")) {
         document.getElementById("results").remove();
+    }
+    if (document.getElementById("warn")) {
+        document.getElementById("warn").remove();
     }
 }
 
