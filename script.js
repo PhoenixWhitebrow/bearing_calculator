@@ -72,10 +72,15 @@ function calculateBearing(){
     const resultsDiv = document.createElement("div");
     resultsDiv.setAttribute("id", "results");
     // check if fields are not empty
-    if (llat1 && llong1 && llat2 && llong2) {
+    function isNumber(value) {
+        return !isNaN(parseInt(value));
+    }
+    if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2) && isNumber(rad)) {
         resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0" + "<br>" + "Target destination is  " + dist.toFixed(3) + " kilometers away";
     // warn if fields are empty
-    } else {
+    } else if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2))
+        resultsDiv.innerHTML = "Bearing " + angledeg.toFixed(0) + "\xB0";
+    else {
         resultsDiv.innerHTML =  "First enter the coordinates!";
     }
 
@@ -86,7 +91,7 @@ function calculateBearing(){
 
 function reset(){
     // clear inputs
-    document.getElementById("rad").value = "6372.795";
+    document.getElementById("rad").value = "";
     document.getElementById("lat1").value = "";
     document.getElementById("lon1").value = "";
     document.getElementById("lat2").value = "";
@@ -107,3 +112,4 @@ function reset(){
         document.getElementById("results").remove();
     }
 }
+
