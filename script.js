@@ -119,7 +119,7 @@ function showResults() {
         let warnDiv = document.createElement("div");
             warnDiv.setAttribute("id", "warn");
             warnDiv.innerHTML = "To calculate the distance, enter the «Planet radius»";
-            warnDiv.style.color = "blue";
+            warnDiv.style.color = "#2987CD";
         let resultsDiv = document.getElementById("results");
             resultsDiv.appendChild(labelDiv1);
             resultsDiv.appendChild(valueDiv1);
@@ -129,7 +129,7 @@ function showResults() {
         let warnDiv = document.createElement("div");
             warnDiv.setAttribute("id", "warn");
             warnDiv.innerHTML =  "First enter the coordinates!";
-            warnDiv.style.color = "red";
+            warnDiv.style.color = "orangered";
         let resultsDiv = document.getElementById("buttons");
             resultsDiv.after(warnDiv);
     }

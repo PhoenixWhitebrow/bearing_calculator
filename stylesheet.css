@@ -1,6 +1,9 @@
 body {
     -moz-transform: scale(2); /* for Firefox, default 1*/
     zoom:200%; /* For Chrome, IE, default 100%*/
+    background-color: #343D46;
+    color: #C0C5CE;
+    text-shadow: 0.2px 0.2px 0.4px black;
 }
 
 .form {
@@ -52,6 +55,8 @@ body {
 .resultValues {
   grid-column: 2;
   justify-self: start;
+  color: white;
+  text-shadow: 0.2px 0.2px 0.5px black;
 }
 
 #warn {
