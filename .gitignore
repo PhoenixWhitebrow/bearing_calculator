@@ -1,0 +1,6 @@
+# ignore macOS Desktop Services Store file
+**/.DS_Store
+
+# ignore Idea IDE workspace.xml and misc.xml
+.idea/workspace.xml
+.idea/misc.xml
