@@ -23,20 +23,39 @@ body {
 
 .buttons {
   position: relative;
-  top: 70px;
-  text-align: center;
+  top: 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+#reset {
+  grid-column: 1;
+  justify-self: end;
+}
+
+#submit {
+  grid-column: 2;
+  justify-self: start;
 }
 
 #results {
   position: relative;
-  top: 70px;
-  width: 100%;
-  text-align: center;
+  top: 110px;
+}
+
+.resultLabels {
+  grid-column: 1;
+  justify-self: end;
+}
+
+.resultValues {
+  grid-column: 2;
+  justify-self: start;
 }
 
 #warn {
   position: relative;
-  top: 70px;
-  width: 100%;
+  top: 120px;
   text-align: center;
 }

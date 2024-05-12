@@ -64,8 +64,11 @@ function calculateBearing(){
             }
         }
     }
-    if (document.getElementById("results")) {
-        document.getElementById("results").remove();
+    if (document.getElementsByClassName("resultLabels")) {
+        document.getElementsByClassName("resultLabels").remove();
+    }
+    if (document.getElementsByClassName("resultValues")) {
+        document.getElementsByClassName("resultValues").remove();
     }
     if (document.getElementById("warn")) {
         document.getElementById("warn").remove();
@@ -77,22 +80,38 @@ function calculateBearing(){
     }
     // if everything's filled correct, show bearing and distance
     if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2) && isNumber(rad)) {
-        var resultsDiv = document.createElement("div");
-            resultsDiv.setAttribute("id", "results");
-            resultsDiv.innerHTML = "Bearing: " + angledeg.toFixed(0) + "\xB0" + "<br>" + "Distance: " + dist.toFixed(3) + " km";
-        var buttonsDiv = document.getElementById("buttons");
-            buttonsDiv.after(resultsDiv);
-    // if radius is not set, show bearing and show a tip to fill the radius 
+        var labelDiv1 = document.createElement("div");
+            labelDiv1.setAttribute("class", "resultLabels");
+            labelDiv1.innerHTML = "Bearing: ";
+        var valueDiv1 = document.createElement("div");
+            valueDiv1.setAttribute("class", "resultValues");
+            valueDiv1.innerHTML = angledeg.toFixed(0) + "\xB0";
+        var labelDiv2 = document.createElement("div");
+            labelDiv2.setAttribute("class", "resultLabels");
+            labelDiv2.innerHTML = "Distance: ";
+        var valueDiv2 = document.createElement("div");
+            valueDiv2.setAttribute("class", "resultValues");
+            valueDiv2.innerHTML = dist.toFixed(3) + " km";
+        var resultsDiv = document.getElementById("results");
+            resultsDiv.appendChild(labelDiv1);
+            resultsDiv.appendChild(valueDiv1);
+            resultsDiv.appendChild(labelDiv2);
+            resultsDiv.appendChild(valueDiv2);
+    // if radius is not set, show bearing and show a tip to fill the 'Planet radius' field
     } else if (isNumber(llat1) && isNumber(llong1) && isNumber(llat2) && isNumber(llong2)) {
-        var resultsDiv = document.createElement("div");
-            resultsDiv.setAttribute("id", "results");
-            resultsDiv.innerHTML = "Bearing: " + angledeg.toFixed(0) + "\xB0" + "<br>";
+        var labelDiv1 = document.createElement("div");
+            labelDiv1.setAttribute("class", "resultLabels");
+            labelDiv1.innerHTML = "Bearing: ";
+        var valueDiv1 = document.createElement("div");
+            valueDiv1.setAttribute("class", "resultValues");
+            valueDiv1.innerHTML = angledeg.toFixed(0) + "\xB0";
         var warnDiv = document.createElement("div");
             warnDiv.setAttribute("id", "warn");
             warnDiv.innerHTML = "To calculate the distance, enter the «Planet radius»";
             warnDiv.style.color = "blue";
-        var buttonsDiv = document.getElementById("buttons");
-            buttonsDiv.after(resultsDiv);
+        var resultsDiv = document.getElementById("results");
+            resultsDiv.appendChild(labelDiv1);
+            resultsDiv.appendChild(valueDiv1);
             resultsDiv.after(warnDiv);
     // error message if coordinates are not set
     } else {
@@ -100,8 +119,8 @@ function calculateBearing(){
             warnDiv.setAttribute("id", "warn");
             warnDiv.innerHTML =  "First enter the coordinates!";
             warnDiv.style.color = "red";
-        var buttonsDiv = document.getElementById("buttons");
-            buttonsDiv.after(warnDiv);
+        var resultsDiv = document.getElementById("buttons");
+            resultsDiv.after(warnDiv);
     }
 }
 
@@ -124,8 +143,11 @@ function reset(){
             }
         }
     }
-    if (document.getElementById("results")) {
-        document.getElementById("results").remove();
+    if (document.getElementsByClassName("resultLabels")) {
+        document.getElementsByClassName("resultLabels").remove();
+    }
+    if (document.getElementsByClassName("resultValues")) {
+        document.getElementsByClassName("resultValues").remove();
     }
     if (document.getElementById("warn")) {
         document.getElementById("warn").remove();
