@@ -5,11 +5,11 @@ rad_earth = 6372.795
 rad = rad_earth
 
 # coordinates of two points
-llat1 = 45.03427
-llong1 = 39.13879
+llat1 = 48.85836
+llong1 = 2.29449
 
-llat2 = 55.41446
-llong2 = 37.89840
+llat2 = 14.74578
+llong2 = -17.52819
 
 # in radians
 lat1 = llat1 * math.pi / 180.

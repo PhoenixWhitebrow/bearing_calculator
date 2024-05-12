@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet"
-    href="https://pyscript.net/releases/2023.11.2/core.css" />
-    <script type="module"
-    src="https://pyscript.net/releases/2023.11.2/core.js">
-    </script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.5.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.5.1/core.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Bearing Calculator</title>
 </head>
 <body>
     <label for="rad">Radius:</label>
-    <input type="text" id="rad" name="rad"><br><br>
+    <input type="text" id="rad" name="rad" value="6372.795"><br><br>
 
     <label for="lat1">Latitude 1:</label>
-    <input type="text" id="lat1" name="lat1"><br><br>
+    <input type="text" id="lat1" name="lat1" value="48.85836"><br><br>
     <label for="lon1">Longitude 1:</label>
-    <input type="text" id="lon1" name="lon1"><br><br>
+    <input type="text" id="lon1" name="lon1"value="2.29449"><br><br>
 
     <label for="lat1">Latitude 2:</label>
-    <input type="text" id="lat2" name="lat2"><br><br>
+    <input type="text" id="lat2" name="lat2"value="14.74578"><br><br>
     <label for="lon1">Longitude 2:</label>
-    <input type="text" id="lon2" name="lon2"><br><br>
+    <input type="text" id="lon2" name="lon2"value="-17.52819"><br><br>
 
-    <input type="submit" id="submit" value="Submit"><br><br>
+    <input type="submit" id="submit" value="Submit" onClick="window.location.reload()"><br><br>
 
     <script type="py">
         from pyscript import window, document
@@ -68,6 +65,7 @@
         z2 = - math.radians(z2)
         anglerad2 = z2 - ((2 * math.pi) * math.floor((z2 / (2 * math.pi))))
         angledeg = (anglerad2 * 180.) / math.pi
+
 
         display('Distance => %.3f' % dist + ' [km]')
         display('Initial bearing => %.2f' % angledeg + ' [degrees]')
